@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "eshop-shared": "apps/eshop-shared",
+    "eshop-shared-e2e": "apps/eshop-shared-e2e"
+  }
+}
