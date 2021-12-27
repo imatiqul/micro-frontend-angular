@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "eshop-catalog": "apps/eshop-catalog",
+    "eshop-catalog-e2e": "apps/eshop-catalog-e2e"
+  }
+}
