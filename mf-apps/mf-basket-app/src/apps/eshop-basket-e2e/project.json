@@ -1,0 +1,28 @@
+{
+  "root": "apps/eshop-basket-e2e",
+  "sourceRoot": "apps/eshop-basket-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/eshop-basket-e2e/cypress.json",
+        "devServerTarget": "eshop-basket:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "eshop-basket:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/eshop-basket-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["eshop-basket"]
+}

@@ -1,0 +1,104 @@
+{
+  "projectType": "application",
+  "root": "apps/eshop-basket",
+  "sourceRoot": "apps/eshop-basket/src",
+  "prefix": "src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/eshop-basket",
+        "index": "apps/eshop-basket/src/index.html",
+        "main": "apps/eshop-basket/src/main.ts",
+        "polyfills": "apps/eshop-basket/src/polyfills.ts",
+        "tsConfig": "apps/eshop-basket/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/eshop-basket/src/favicon.ico",
+          "apps/eshop-basket/src/assets"
+        ],
+        "styles": ["apps/eshop-basket/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/eshop-basket/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/eshop-basket/src/environments/environment.ts",
+              "with": "apps/eshop-basket/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/eshop-basket/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "eshop-basket:build:production"
+        },
+        "development": {
+          "browserTarget": "eshop-basket:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 5552,
+        "publicHost": "http://localhost:5552"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "eshop-basket:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/eshop-basket/src/**/*.ts",
+          "apps/eshop-basket/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/eshop-basket"],
+      "options": {
+        "jestConfig": "apps/eshop-basket/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
