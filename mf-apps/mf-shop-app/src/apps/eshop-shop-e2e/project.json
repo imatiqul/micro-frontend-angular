@@ -1,0 +1,28 @@
+{
+  "root": "apps/eshop-shop-e2e",
+  "sourceRoot": "apps/eshop-shop-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/eshop-shop-e2e/cypress.json",
+        "devServerTarget": "eshop-shop:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "eshop-shop:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/eshop-shop-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["eshop-shop"]
+}
