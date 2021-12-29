@@ -10,14 +10,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule, HttpClientXsrfModule, HttpClient } from '@angular/common/http';
+import { httpInterceptorProviders } from './http-clients/http-interceptors';
+import { EshopHttpClient, eshopHttpClientCreator } from './http-clients/eshop-http-client';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
   ],
-  providers: [],
+  providers: [httpInterceptorProviders,
+    // Provide the extended HttpClient
+    {
+      provide: EshopHttpClient,
+      useFactory: eshopHttpClientCreator,
+      deps: [HttpClient]
+    }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

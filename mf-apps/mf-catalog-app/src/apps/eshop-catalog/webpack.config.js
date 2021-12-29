@@ -48,6 +48,7 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         './Module': 'apps/eshop-catalog/src/app/remote-entry/entry.module.ts',
+        './CatalogsModule': 'apps/eshop-catalog/src/app/catalogs/catalogs.module.ts',
       },
       shared: share({
         '@angular/core': {
